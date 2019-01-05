@@ -4,7 +4,7 @@ from framework.states.Transition import Transition, TransitionConstants
 from pong import PongGlobalVariables
 
 
-class FirstState(AbstractState):
+class InitialState(AbstractState):
     def __init__(self):
         super().__init__()
 
@@ -14,17 +14,5 @@ class FirstState(AbstractState):
         # Initialize font.
         pygame.font.init()
 
-        # The first real state.
+        # The first 'real' state to go to.
         self.nextTransition = Transition(TransitionConstants.MAIN_MENU, False)
-
-    def update(self, delta):
-        pass
-
-    def draw(self, interpolation):
-        pass
-
-    def handleEvent(self, event):
-        pass
-
-    def actionAfterEvent(self):
-        pass

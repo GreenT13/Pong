@@ -7,7 +7,7 @@ class TransitionConstants(Enum):
     PREVIOUSLY_SAVED = auto()
 
     # Special state that must be present.
-    FIRST_STATE = auto()
+    INITIAL_STATE = auto()
 
     # Transitions linked to states.
     MAIN_MENU = auto()
@@ -25,7 +25,7 @@ class Transition:
 
 transitionStateMap = {
     # Special state that must be present.
-    TransitionConstants.FIRST_STATE: "pong.states.FirstState",
+    TransitionConstants.INITIAL_STATE: "pong.states.InitialState",
 
     # Game specific states.
     TransitionConstants.MAIN_MENU: "pong.states.MainMenu"

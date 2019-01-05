@@ -11,11 +11,16 @@ class MainMenu(AbstractState):
         self.nextTransition = Transition(TransitionConstants.GAME, False)
 
     def options(self):
-        self.nextTransition = Transition(TransitionConstants.MAIN_MENU_OPTIONS, False)
+        # self.nextTransition = Transition(TransitionConstants.MAIN_MENU_OPTIONS, False)
+        print("I don't really have options yet!")
+
+    def exit(self):
+        self.nextTransition = Transition(TransitionConstants.EXIT, False)
 
     menuItems = [
         ['Start Game', startGame],
-        ['Options', options]
+        ['Options', options],
+        ['Exit', exit]
     ]
 
     def __init__(self):
