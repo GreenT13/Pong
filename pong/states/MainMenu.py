@@ -2,20 +2,20 @@ import pygame
 
 from framework.draw import DrawUtil
 from framework.states.AbstractState import AbstractState
-from framework.states.Transition import TransitionConstants, Transition
+from framework.states.Transition import TransitionConstants
 from pong import PongConstants, PongGlobalVariables
 
 
 class MainMenu(AbstractState):
     def startGame(self):
-        self.nextTransition = Transition(TransitionConstants.GAME, False)
+        self.setNextTransition(TransitionConstants.GAME, False)
 
     def options(self):
-        # self.nextTransition = Transition(TransitionConstants.MAIN_MENU_OPTIONS, False)
+        # self.setNextTransition(TransitionConstants.MAIN_MENU_OPTIONS, False)
         print("I don't really have options yet!")
 
     def exit(self):
-        self.nextTransition = Transition(TransitionConstants.EXIT, False)
+        self.setNextTransition(TransitionConstants.EXIT, False)
 
     menuItems = [
         ['Start Game', startGame],

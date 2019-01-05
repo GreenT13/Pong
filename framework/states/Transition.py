@@ -25,8 +25,9 @@ class Transition:
 
 transitionStateMap = {
     # Special state that must be present.
-    TransitionConstants.INITIAL_STATE: "pong.states.InitialState",
+    TransitionConstants.INITIAL_STATE: "pong.states.InitialState"
 
     # Game specific states.
-    TransitionConstants.MAIN_MENU: "pong.states.MainMenu"
+    , TransitionConstants.MAIN_MENU: "pong.states.MainMenu"
+    , TransitionConstants.GAME: "pong.states.Pong"
 }
