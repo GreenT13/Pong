@@ -1,2 +1,0 @@
-BALL_SIZE_X = 10
-BALL_SIZE_Y = 10

@@ -1,4 +1,4 @@
-from framework.states.Transition import stateMap, TransitionConstants
+from framework.states.Transition import transitionStateMap, TransitionConstants, Transition
 from framework.process.Process import Process
 import importlib
 
@@ -15,7 +15,7 @@ class ProcessManager:
             if usePreviouslySaved:
                 process = self.previousProcess.pop()
             else:
-                state = ProcessManager.instantiateClass(stateMap.get(transition.transitionConstant))
+                state = ProcessManager.instantiateClass(transitionStateMap.get(transition.transitionConstant))
                 process = Process(state)
 
             # Run the process and get a transition.
@@ -26,6 +26,11 @@ class ProcessManager:
                 usePreviouslySaved = False
             else:
                 transition = process.startProcess()
+
+            # If transition is None, something went wrong. We show a warning, and initialize an EXIT transition.
+            if transition is None:
+                print('Warning: Transition is None. We quit the application.')
+                transition = Transition(TransitionConstants.EXIT, False)
 
             # We need to save process if indicated.
             if transition.keepPrevious:

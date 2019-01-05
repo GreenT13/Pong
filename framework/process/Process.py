@@ -13,12 +13,16 @@ class Process:
 
     def __init__(self, state):
         """ See class description for more information. """
-        self.clock = GameClock(update_callback=state.update, frame_callback=state.draw)
+        self.clock = GameClock(update_callback=state.update, frame_callback=self.drawWithFlip)
         self.handleEvent = state.handleEvent
         self.actionAfterEvent = state.actionAfterEvent
 
         # Store the state for later reference.
         self.state = state
+
+    def drawWithFlip(self, interpolation):
+        self.state.draw(interpolation)
+        pygame.display.flip()
 
     def startProcess(self):
         """ Starts the game. See class description. """
@@ -42,6 +46,10 @@ class Process:
             # Any other actions may be executed.
             if self.actionAfterEvent:
                 self.actionAfterEvent()
+
+            # If we need to transition, we just return it.
+            if self.state.getNextTransition():
+                return self.state.getNextTransition()
 
     def pause(self):
         pass

@@ -23,7 +23,7 @@ class Transition:
         self.keepPrevious = keepPrevious
 
 
-stateMap = {
+transitionStateMap = {
     # Special state that must be present.
     TransitionConstants.FIRST_STATE: "pong.states.FirstState",
 
